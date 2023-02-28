@@ -18,11 +18,16 @@ function Page({
 export async function getServerSideProps() {
   let { data } = await supabase.from("messages").select();
 
-  return {
-    props: {
-      messages: data,
-    },
-  };
+  if (data) {
+    return {
+      props: {
+        messages: data.map((message) => ({
+          id: message.id,
+          message_text: message.message_text,
+        })),
+      },
+    };
+  }
 }
 
 export default Page;
