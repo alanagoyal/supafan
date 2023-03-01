@@ -5,9 +5,6 @@ import { useState } from "react";
 type Messages = Database["public"]["Tables"]["messages"]["Row"];
 
 function displayMessages(messages: Messages[]) {
-  const [date, setDate] = useState<Messages["created_at"]>(null);
-  const [message, setMessage] = useState<Messages["message_text"]>(null);
-
   return (
     <div className="flex justify-between items-center">
       {messages &&
