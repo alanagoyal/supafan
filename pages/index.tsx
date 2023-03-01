@@ -1,5 +1,7 @@
 import { supabase } from "./../lib/supabaseClient";
 import { Database } from "@/types/supabase";
+import Message from "@/components/message";
+import Display from "@/components/display";
 
 function Page({
   messages,
@@ -7,27 +9,12 @@ function Page({
   messages: Database["public"]["Tables"]["messages"]["Row"];
 }) {
   return (
-    <ul>
-      {messages.map((message) => (
-        <li key={message.id}>{message.message_text}</li>
-      ))}
-    </ul>
+    <div className="absolute w-full h-screen">
+      <div className="absolute w-[600px] h-[400px] top-[-200px] left-[-200px] bg-green-400 rounded-full blur-[100px] opacity-20 dark:opacity-10" />
+      <div className="absolute w-[800px] h-[500px] bottom-[-200px] right-0 bg-green-600 rounded-full blur-[100px] opacity-20 dark:opacity-10" />
+      <Message />
+    </div>
   );
-}
-
-export async function getServerSideProps() {
-  let { data } = await supabase.from("messages").select();
-
-  if (data) {
-    return {
-      props: {
-        messages: data.map((message) => ({
-          id: message.id,
-          message_text: message.message_text,
-        })),
-      },
-    };
-  }
 }
 
 export default Page;
