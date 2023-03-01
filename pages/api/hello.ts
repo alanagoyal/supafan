@@ -1,13 +1,15 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from "next";
+// we import our `helloWorld()` background function
 
 type Data = {
-  name: string
-}
+  ok: boolean;
+};
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  res.status(200).json({ name: 'John Doe' })
+  // calling a background function triggers an execution on Defer Platform
+
+  res.status(200).json({ ok: true });
 }

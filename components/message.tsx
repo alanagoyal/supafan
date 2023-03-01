@@ -10,11 +10,11 @@ export default function Message() {
 
   async function submitMessage(message: Messages["message_text"]) {
     try {
-      let { error } = await supabase.from("messags").insert(message);
-      toast("Hooray! Your message has been submitted.");
+      let { error } = await supabase.from("messages").insert(message);
       if (error) throw error;
+      toast.success("Hooray! Your message has been submitted.");
     } catch (error) {
-      toast("Error sending message");
+      toast.error("Error sending message");
       console.log(error);
     }
   }
@@ -36,10 +36,10 @@ export default function Message() {
       </div>
       <div className="flex justify-center">
         <button
-          className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+          className="bg-green-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded-full"
           onClick={() => submitMessage(message)}
         >
-          Submit Rating
+          Submit
         </button>
       </div>
     </div>
