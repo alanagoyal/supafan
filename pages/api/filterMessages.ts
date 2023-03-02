@@ -38,15 +38,14 @@ export default async function handler(
     const data = JSON.parse(result);
     console.log(`data is ${data}`);
     const scores = data.response.response.scores;
-    const bad = false;
+    let bad = false;
     scores.forEach((score: string) => {
       const scoreAsNumber = Number(score);
       if (scoreAsNumber > 0.9) {
         console.log(`${scoreAsNumber} is greater than 0.9`);
-        const bad = true;
+        bad = true;
       } else {
         console.log(`${scoreAsNumber} is less than or equal to 0.9`);
-        const bad = false;
       }
     });
     res.status(200).json({ response: bad });
