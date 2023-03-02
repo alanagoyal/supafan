@@ -25,9 +25,7 @@ export default function Message() {
       try {
         let { error } = await supabase.from("messages").insert(message);
         if (error) throw error;
-        toast.success("Hooray! Your message has been submitted.");
       } catch (error) {
-        toast.error("Error sending message");
         console.log(error);
       }
     }
@@ -48,8 +46,10 @@ export default function Message() {
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              submitMessage(message);
               setMessage("");
+              toast.success("Hooray! Your message has been submitted.");
+
+              submitMessage(message);
             }
           }}
           value={message!}
@@ -59,8 +59,9 @@ export default function Message() {
         <button
           className="bg-green-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded-full"
           onClick={() => {
-            submitMessage(message);
             setMessage("");
+            toast.success("Hooray! Your message has been submitted.");
+            submitMessage(message);
           }}
         >
           Submit

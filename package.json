@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
+    "mirrorful": "^2.0.20",
     "postcss": "^8.4.21",
     "supabase": "^1.40.1",
     "tailwindcss": "^3.2.7"
