@@ -2,6 +2,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { Database } from "@/types/supabase";
 import { useState } from "react";
 import toast, { Toast, Toaster } from "react-hot-toast";
+import { Tokens } from "./../.mirrorful/theme";
 
 type Messages = Database["public"]["Tables"]["messages"]["Row"];
 
@@ -23,8 +24,11 @@ export default function Message() {
       console.log("bad result");
     } else {
       try {
-        let { error } = await supabase.from("messages").insert(message);
+        let { error } = await supabase
+          .from("messages")
+          .insert({ message_text: message });
         if (error) throw error;
+        console.log("message inserted into db");
       } catch (error) {
         console.log(error);
       }
@@ -48,7 +52,6 @@ export default function Message() {
             if (e.key === "Enter") {
               setMessage("");
               toast.success("Hooray! Your message has been submitted.");
-
               submitMessage(message);
             }
           }}
