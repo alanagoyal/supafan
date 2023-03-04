@@ -30,7 +30,10 @@ export default function Message() {
       return;
     }
     const tenor_url = new URL("https://g.tenor.com/v1/random");
-    tenor_url.searchParams.append("q", message);
+
+    if (message) {
+      tenor_url.searchParams.append("q", message);
+    }
     tenor_url.searchParams.append("key", "LIVDSRZULELA");
 
     const tenor_response = await fetch(tenor_url.href);
