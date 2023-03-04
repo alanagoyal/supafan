@@ -14,7 +14,6 @@ type Messages = Database["public"]["Tables"]["messages"]["Row"];
 
 export default function Message() {
   const [message, setMessage] = useState<Messages["message_text"]>(null);
-  const [gifs, setGifs] = useState<TenorGif[]>([]);
 
   async function submitMessage(message: Messages["message_text"]) {
     const response = await fetch("/api/filterMessages", {
