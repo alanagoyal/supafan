@@ -65,8 +65,8 @@ export const Gallery = ({ quotes }: GalleryProps): JSX.Element => {
       {splitIntoChunks(quotes, 4).map((quotesChunk, i) => {
         return (
           <div key={i} className="flex flex-col gap-4">
-            {quotesChunk.map((quote) => {
-              return <QuoteCard {...quote} />;
+            {quotesChunk.map((quote, j) => {
+              return <QuoteCard key={j} {...quote} />;
             })}
           </div>
         );
