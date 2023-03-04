@@ -7,7 +7,7 @@ interface TenorGif {
   media: { gif: { url: string } }[];
 }
 
-const searchGifs: NextApiHandler = async (req, res) => {
+/* const searchGifs: NextApiHandler = async (req, res) => {
   const { query } = req.body;
 
   try {
@@ -22,3 +22,4 @@ const searchGifs: NextApiHandler = async (req, res) => {
 };
 
 export default searchGifs;
+ */
