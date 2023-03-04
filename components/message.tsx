@@ -1,10 +1,7 @@
 import { supabase } from "@/lib/supabaseClient";
 import { Database } from "@/types/supabase";
 import toast, { Toast, Toaster } from "react-hot-toast";
-import { SearchForm } from "@/components/gif-search";
-import { TenorGif } from "tenorjs";
 import React, { useState } from "react";
-import { searchGifs } from "../lib/tenorClient";
 import { mutate } from "swr";
 
 type Gif = {
@@ -31,18 +28,31 @@ export default function Message() {
 
     if (result.response) {
       toast.error("Sorry, that message isn't appropriate.");
-      console.log("bad result");
-    } else {
-      try {
-        let { error } = await supabase
-          .from("messages")
-          .insert({ message_text: message });
-        if (error) throw error;
-        console.log("message inserted into db");
-        mutate("/api/display");
-      } catch (error) {
-        console.log(error);
-      }
+      return;
+    }
+    const tenor_url = new URL("https://g.tenor.com/v1/random");
+    tenor_url.searchParams.append("q", message);
+    tenor_url.searchParams.append("key", "LIVDSRZULELA");
+
+    const tenor_response = await fetch(tenor_url.href);
+
+    const tenor_data = await tenor_response.json();
+
+    let gif_url = null;
+
+    if (tenor_data.results) {
+      gif_url = tenor_data.results[0].media[0].gif.url;
+    }
+
+    try {
+      let { error } = await supabase
+        .from("messages")
+        .insert({ message_text: message, gif_url: gif_url });
+      if (error) throw error;
+      console.log("message inserted into db");
+      mutate("/api/display");
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -71,14 +81,6 @@ export default function Message() {
           }}
           value={message!}
         />
-        <button
-          className="bg-cyan-700 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded-full ml-2"
-          onClick={() => {
-            // todo
-          }}
-        >
-          Add Gif
-        </button>
         <button
           className="bg-cyan-700 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded-full ml-2"
           onClick={() => {

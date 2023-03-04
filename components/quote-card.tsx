@@ -37,11 +37,13 @@ export const QuoteCard = ({
         </div>
       </div>
       <p className="text-white text-sm">{quote}</p>
-      <img
-        className="object-cover border-[0.5px]flex-none"
-        src={gif_url}
-        alt="todo"
-      />
+      {gif_url ? (
+        <img
+          className="object-cover border-[0.5px]flex-none"
+          src={gif_url}
+          alt="todo"
+        />
+      ) : null}
     </div>
   );
 };
