@@ -16,35 +16,29 @@ export default function Message() {
   const [message, setMessage] = useState<Messages["message_text"]>(null);
 
   async function submitMessage(message: Messages["message_text"]) {
-    const response = await fetch("/api/filterMessages", {
+    // make api call to filter inapropriate messages
+    const filter_response = await fetch("/api/filterMessages", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message_text: message }),
     });
 
-    const result = await response.json();
-    console.log(result);
+    const filter_result = await filter_response.json();
 
-    if (result.response) {
+    if (filter_result.response) {
       toast.error("Sorry, that message isn't appropriate.");
       return;
     }
-    const tenor_url = new URL("https://g.tenor.com/v1/random");
 
-    if (message) {
-      tenor_url.searchParams.append("q", message);
-    }
-    tenor_url.searchParams.append("key", "LIVDSRZULELA");
+    // make api call to generate gif
+    const tenor_response = await fetch("/api/searchGifs", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message_text: message }),
+    });
 
-    const tenor_response = await fetch(tenor_url.href);
-
-    const tenor_data = await tenor_response.json();
-
-    let gif_url = null;
-
-    if (tenor_data.results) {
-      gif_url = tenor_data.results[0].media[0].gif.url;
-    }
+    const tenor_result = await tenor_response.json();
+    const gif_url = tenor_result.response;
 
     try {
       let { error } = await supabase
@@ -63,7 +57,7 @@ export default function Message() {
       <Toaster />
       <h1 className="text-4xl font-bold text-center my-6">⚡️ Supafan ⚡️</h1>
       <h2 className="text-1xl text-center my-6">
-        What do you love about Supabase?
+        Tell us what you love about Supabase 👇🏼
       </h2>
       <div className="my-4 flex justify-center">
         <input
