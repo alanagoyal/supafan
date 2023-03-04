@@ -1,17 +1,11 @@
 import { faker } from "@faker-js/faker";
 
-type Quote = {
-  name: string;
-  title: string;
-  avatar: string;
-  quote: string;
-};
-
 type QuoteCardProps = {
   avatar: string;
   name: string;
   title: string;
   quote: string;
+  gif_url?: string;
 };
 
 export const QuoteCard = ({
@@ -19,9 +13,10 @@ export const QuoteCard = ({
   name,
   title,
   quote,
+  gif_url,
 }: QuoteCardProps): JSX.Element => {
   return (
-    <div className="bg-green-900 rounded-md p-6 gap-4 not-prose flex flex-col">
+    <div className="bg-cyan-900 rounded-md p-6 gap-4 not-prose flex flex-col ">
       <div className="flex flex-row gap-4 items-center">
         <img
           className="rounded-full w-10 h-10 object-cover border-[0.5px] border-white/50 bg-white/10 flex-none"
@@ -34,16 +29,14 @@ export const QuoteCard = ({
         </div>
       </div>
       <p className="text-white text-sm">{quote}</p>
+      <img
+        className="object-cover border-[0.5px]flex-none"
+        src={gif_url}
+        alt="todo"
+      />
     </div>
   );
 };
-
-const quotes: Quote[] = Array.from(Array(15).keys()).map((_) => ({
-  name: faker.name.fullName(),
-  title: faker.company.companyName(),
-  avatar: faker.image.avatar(),
-  quote: faker.lorem.paragraph(),
-}));
 
 export const splitIntoChunks = <T extends unknown>(
   arr: T[],
@@ -74,5 +67,3 @@ export const Gallery = ({ quotes }: GalleryProps): JSX.Element => {
     </div>
   );
 };
-
-<Gallery quotes={quotes} />;

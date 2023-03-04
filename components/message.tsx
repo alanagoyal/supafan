@@ -30,7 +30,7 @@ export default function Message() {
     console.log(result);
 
     if (result.response) {
-      toast.error("Sorry, that message isn't appropriate. Please be nice!");
+      toast.error("Sorry, that message isn't appropriate.");
       console.log("bad result");
     } else {
       try {
@@ -53,35 +53,39 @@ export default function Message() {
       <h2 className="text-1xl text-center my-6">
         What do you love about Supabase?
       </h2>
-      <div>
-        {/*         <SearchForm onSearch={handleSearch} />
-        {gifs.map((gif) => (
-          <img key={gif.id} src={gif.media[0].gif.url} alt={gif.title} />
-        ))} */}
-      </div>
-      <div className="my-4">
+      <div className="my-4 flex justify-center">
         <input
           autoComplete="off"
           id="message"
           type="text"
-          className="block w-full rounded-md border-gray-300 shadow-sm py-2 px-3 mt-1 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+          className="block w-500 rounded-md border-gray-300 shadow-sm py-2 px-3 mt-1 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               setMessage("");
-              toast.success("Hooray! Your message has been submitted.");
+              toast.success(
+                "Hooray! Hold tight while we submit your message for review."
+              );
               submitMessage(message);
             }
           }}
           value={message!}
         />
-      </div>
-      <div className="flex justify-center">
         <button
-          className="bg-green-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded-full"
+          className="bg-cyan-700 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded-full ml-2"
+          onClick={() => {
+            // todo
+          }}
+        >
+          Add Gif
+        </button>
+        <button
+          className="bg-cyan-700 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded-full ml-2"
           onClick={() => {
             setMessage("");
-            toast.success("Hooray! Your message has been submitted.");
+            toast.success(
+              "Hooray! Hold tight while we submit your message for review."
+            );
             submitMessage(message);
           }}
         >

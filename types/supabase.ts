@@ -12,20 +12,20 @@ export interface Database {
       messages: {
         Row: {
           created_at: string | null;
+          gif_url: string | null;
           id: number;
-          is_pc: boolean | null;
           message_text: string | null;
         };
         Insert: {
           created_at?: string | null;
+          gif_url?: string | null;
           id?: number;
-          is_pc?: boolean | null;
           message_text?: string | null;
         };
         Update: {
           created_at?: string | null;
+          gif_url?: string | null;
           id?: number;
-          is_pc?: boolean | null;
           message_text?: string | null;
         };
       };
