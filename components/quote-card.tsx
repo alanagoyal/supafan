@@ -21,7 +21,7 @@ export const QuoteCard = ({
   quote,
 }: QuoteCardProps): JSX.Element => {
   return (
-    <div className="bg-cyan-900 rounded-md p-6 gap-4 not-prose flex flex-col">
+    <div className="bg-green-900 rounded-md p-6 gap-4 not-prose flex flex-col">
       <div className="flex flex-row gap-4 items-center">
         <img
           className="rounded-full w-10 h-10 object-cover border-[0.5px] border-white/50 bg-white/10 flex-none"
@@ -62,9 +62,9 @@ type GalleryProps = {
 export const Gallery = ({ quotes }: GalleryProps): JSX.Element => {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 auto-rows-min">
-      {splitIntoChunks(quotes, 4).map((quotesChunk) => {
+      {splitIntoChunks(quotes, 4).map((quotesChunk, i) => {
         return (
-          <div className="flex flex-col gap-4">
+          <div key={i} className="flex flex-col gap-4">
             {quotesChunk.map((quote) => {
               return <QuoteCard {...quote} />;
             })}
