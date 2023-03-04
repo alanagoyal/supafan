@@ -1,59 +1,31 @@
 import { supabase } from "@/lib/supabaseClient";
 import { Database } from "@/types/supabase";
+import React, { useState } from "react";
+import useSWR from "swr";
+import { faker } from "@faker-js/faker";
+import { Gallery } from "./quote-card";
+
+type Quote = {
+  name: string;
+  title: string;
+  avatar: string;
+  quote: string;
+};
 
 type Messages = Database["public"]["Tables"]["messages"]["Row"];
 
-export default function Display(messages: any) {
-  return (
-    <div>
-      {/*       {" "}
-      {messages.map((message: any) => (
-        <div key={message.id}>{message.message_text}</div>
-      ))} */}
-    </div>
-  );
-}
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-export async function getServerSideProps() {
-  try {
-    let { data, error, status } = await supabase.from("messages").select();
+export default function Display() {
+  const { data } = useSWR("/api/display", fetcher);
 
-    if (data) {
-      for (const message of data as any) {
-        const response = await fetch("/api/filterMessages", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message_text: message.message_text }),
-        });
+  const quotes: Quote[] =
+    data?.messages?.map((message: Messages) => ({
+      name: faker.name.fullName(),
+      title: faker.company.name(),
+      avatar: faker.image.avatar(),
+      quote: message.message_text,
+    })) ?? [];
 
-        const result = await response.json();
-        console.log(result);
-
-        if (result.response) {
-          console.log("bad result");
-          const { error } = await supabase
-            .from("messages")
-            .update({ is_pc: false })
-            .eq("id", message.id);
-          if (error) throw error;
-        }
-      }
-    }
-    if (error) throw error;
-  } catch (error) {
-    console.log(error);
-  }
-
-  try {
-    let { data, error, status } = await supabase.from("messages").select();
-    if (data) {
-      return {
-        props: {
-          messages: data,
-        },
-      };
-    }
-  } catch (error) {
-    console.log(error);
-  }
+  return <Gallery quotes={quotes} />;
 }

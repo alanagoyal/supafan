@@ -11,7 +11,6 @@ export interface Database {
     Tables: {
       messages: {
         Row: {
-          map(arg0: (message: any) => JSX.Element): import("react").ReactNode;
           created_at: string | null;
           id: number;
           is_pc: boolean | null;

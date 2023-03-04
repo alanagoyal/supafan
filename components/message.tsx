@@ -1,13 +1,23 @@
 import { supabase } from "@/lib/supabaseClient";
 import { Database } from "@/types/supabase";
-import { useState } from "react";
 import toast, { Toast, Toaster } from "react-hot-toast";
-import { Tokens } from "./../.mirrorful/theme";
+import { SearchForm } from "@/components/gif-search";
+import { TenorGif } from "tenorjs";
+import React, { useState } from "react";
+import { searchGifs } from "../lib/tenorClient";
+import { mutate } from "swr";
+
+type Gif = {
+  id: string;
+  url: string;
+  preview: string;
+};
 
 type Messages = Database["public"]["Tables"]["messages"]["Row"];
 
 export default function Message() {
   const [message, setMessage] = useState<Messages["message_text"]>(null);
+  const [gifs, setGifs] = useState<TenorGif[]>([]);
 
   async function submitMessage(message: Messages["message_text"]) {
     const response = await fetch("/api/filterMessages", {
@@ -29,6 +39,7 @@ export default function Message() {
           .insert({ message_text: message });
         if (error) throw error;
         console.log("message inserted into db");
+        mutate("/api/display");
       } catch (error) {
         console.log(error);
       }
@@ -42,8 +53,15 @@ export default function Message() {
       <h2 className="text-1xl text-center my-6">
         What do you love about Supabase?
       </h2>
+      <div>
+        {/*         <SearchForm onSearch={handleSearch} />
+        {gifs.map((gif) => (
+          <img key={gif.id} src={gif.media[0].gif.url} alt={gif.title} />
+        ))} */}
+      </div>
       <div className="my-4">
         <input
+          autoComplete="off"
           id="message"
           type="text"
           className="block w-full rounded-md border-gray-300 shadow-sm py-2 px-3 mt-1 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"

@@ -36,7 +36,6 @@ export default async function handler(
     const response = await fetch("https://predict.pyqai.com", requestOptions);
     const result = await response.text();
     const data = JSON.parse(result);
-    console.log(`data is ${data}`);
     const scores = data.response.response.scores;
     let bad = false;
     scores.forEach((score: string) => {
