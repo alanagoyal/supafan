@@ -1,5 +1,13 @@
 import { faker } from "@faker-js/faker";
 
+type Quote = {
+  name: string;
+  title: string;
+  avatar: string;
+  quote: string;
+  gif_url?: string;
+};
+
 type QuoteCardProps = {
   avatar: string;
   name: string;
