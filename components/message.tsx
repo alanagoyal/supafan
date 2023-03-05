@@ -53,7 +53,7 @@ export default function Message() {
   }
 
   return (
-    <div className="bg-[#1c1c1c] py-5 mx-10 max-width-5-xl">
+    <div className="py-5 mx-10 max-width-5-xl">
       <Toaster />
       <h1 className="text-4xl font-bold text-center my-6">Supafan</h1>
       <h2 className="text-1xl text-center my-6">
