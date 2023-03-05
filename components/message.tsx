@@ -53,9 +53,9 @@ export default function Message() {
   }
 
   return (
-    <div className="py-5 mx-10 max-width-5-xl">
+    <div className="bg-[#1c1c1c] py-5 mx-10 max-width-5-xl">
       <Toaster />
-      <h1 className="text-4xl font-bold text-center my-6">⚡️ Supafan ⚡️</h1>
+      <h1 className="text-4xl font-bold text-center my-6">Supafan</h1>
       <h2 className="text-1xl text-center my-6">
         Tell us what you love about Supabase 👇🏼
       </h2>
@@ -78,7 +78,7 @@ export default function Message() {
           value={message!}
         />
         <button
-          className="bg-cyan-700 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded-full ml-2"
+          className="bg-[#2b825b] hover:bg-[#3dc688] text-white font-bold py-2 px-4 rounded-full ml-2"
           onClick={() => {
             setMessage("");
             toast.success(
