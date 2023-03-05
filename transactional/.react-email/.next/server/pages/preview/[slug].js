@@ -19,6 +19,14 @@ exports.modules = {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
+	"./new-fan-mail": [
+		"./emails/new-fan-mail.jsx",
+		"emails_new-fan-mail_jsx"
+	],
+	"./new-fan-mail.jsx": [
+		"./emails/new-fan-mail.jsx",
+		"emails_new-fan-mail_jsx"
+	],
 	"./notion-magic-link": [
 		"./emails/notion-magic-link.tsx",
 		"emails_notion-magic-link_tsx"
