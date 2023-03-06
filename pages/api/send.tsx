@@ -10,7 +10,7 @@ type SendEmailRequestData = {
   gif_url: string;
 };
 
-/* export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { message_text, gif_url } = req.body as SendEmailRequestData;
     console.log(req.body);
@@ -25,4 +25,4 @@ type SendEmailRequestData = {
   } catch (e) {
     res.status(400).json(e);
   }
-}; */
+};

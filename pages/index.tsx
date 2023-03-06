@@ -1,8 +1,8 @@
 import { supabase } from "./../lib/supabaseClient";
 import { Database } from "@/types/supabase";
 import Message from "@/components/message";
-import { Gallery } from "@/components/quote-card";
 import Display from "@/components/display";
+import { FrigadeChecklist } from "@frigade/react";
 
 function Page({
   messages,
@@ -16,6 +16,12 @@ function Page({
       <div className="absolute w-[800px] h-[500px] bottom-[-200px] right-0 bg-green-200 rounded-full blur-[100px] opacity-20 dark:opacity-10" />
       <Message />
       <Display />
+      <FrigadeChecklist
+        flowId="flow_laJhda4sgJCdsCy6"
+        title={"Get Started"}
+        subtitle={"Complete the following steps to get started"}
+        primaryColor={"#3661E1"}
+      />
     </div>
   );
 }

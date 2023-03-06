@@ -4,12 +4,6 @@ import toast, { Toast, Toaster } from "react-hot-toast";
 import React, { useState } from "react";
 import { mutate } from "swr";
 
-type Gif = {
-  id: string;
-  url: string;
-  preview: string;
-};
-
 type Messages = Database["public"]["Tables"]["messages"]["Row"];
 
 export default function Message() {
@@ -64,7 +58,7 @@ export default function Message() {
           autoComplete="off"
           id="message"
           type="text"
-          className="block w-500 rounded-md border-gray-300 shadow-sm py-2 px-3 mt-1 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+          className="block w-full rounded-md border-gray-300 shadow-sm py-2 px-3 mt-1 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
