@@ -57,7 +57,7 @@ export default function Message() {
           autoComplete="off"
           id="message"
           type="text"
-          className="block w-full rounded-md border-gray-300 shadow-sm py-2 px-3 mt-1 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+          className="w-full bg-gray-100 rounded-md border-gray-300 shadow-sm py-2 px-3 mt-1 focus:outline-none focus:ring-green-500 focus:border-green-500 text-base sm:text-sm"
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
@@ -70,6 +70,7 @@ export default function Message() {
           }}
           value={message!}
         />
+
         <button
           className="bg-[#2b825b] hover:bg-[#3dc688] text-white font-bold py-2 px-4 rounded-full ml-2"
           onClick={() => {
