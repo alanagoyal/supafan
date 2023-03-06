@@ -34,12 +34,10 @@ export default async function handler(
 
   try {
     const response = await fetch("https://predict.pyqai.com", requestOptions);
-    console.log(`rsponse: ${response}`);
     const result = await response.text();
     const data = JSON.parse(result);
     if (data.response) {
       const scores = data.response.response.scores;
-      console.log(`scores is ${scores}`);
       let bad = false;
       scores.forEach((score: string) => {
         const scoreAsNumber = Number(score);

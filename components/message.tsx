@@ -7,7 +7,7 @@ import { mutate } from "swr";
 type Messages = Database["public"]["Tables"]["messages"]["Row"];
 
 export default function Message() {
-  const [message, setMessage] = useState<Messages["message_text"]>(null);
+  const [message, setMessage] = useState<Messages["message_text"]>("");
 
   async function submitMessage(message: Messages["message_text"]) {
     // make api call to filter inapropriate messages
@@ -39,7 +39,6 @@ export default function Message() {
         .from("messages")
         .insert({ message_text: message, gif_url: gif_url });
       if (error) throw error;
-      console.log("message inserted into db");
       mutate("/api/display");
     } catch (error) {
       console.log(error);
