@@ -32,28 +32,28 @@ export default async function handler(
     redirect: "follow",
   };
 
+  let response;
   try {
-    const response = await fetch("https://predict.pyqai.com", requestOptions);
-    const result = await response.text();
-    const data = JSON.parse(result);
-    if (data.response) {
-      const scores = data.response.response.scores;
-      let bad = false;
-      scores.forEach((score: string) => {
-        const scoreAsNumber = Number(score);
-        if (scoreAsNumber > 0.9) {
-          console.log(`${scoreAsNumber} is greater than 0.9`);
-          bad = true;
-        } else {
-          console.log(`${scoreAsNumber} is less than or equal to 0.9`);
-        }
-      });
-      res.status(200).json({ response: bad });
-    } else {
-      throw new Error("Invalid response from API");
-    }
+    response = await fetch("https://predict.pyqai.com", requestOptions);
   } catch (error) {
     console.log("error", error);
-    res.status(500).json({ message: "Internal server error" });
+  }
+  if (response?.ok) {
+    const result = await response.text();
+    const data = JSON.parse(result);
+    const scores = data.response.response.scores;
+    let bad = false;
+    scores.forEach((score: string) => {
+      const scoreAsNumber = Number(score);
+      if (scoreAsNumber > 0.9) {
+        console.log(`${scoreAsNumber} is greater than 0.9`);
+        bad = true;
+      } else {
+        console.log(`${scoreAsNumber} is less than or equal to 0.9`);
+      }
+    });
+    res.status(200).json({ response: bad });
+  } else {
+    console.log(`HTTP Response Code: ${response?.status}`);
   }
 }
