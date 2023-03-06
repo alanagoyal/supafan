@@ -3,6 +3,7 @@ import { Database } from "@/types/supabase";
 import Message from "@/components/message";
 import Display from "@/components/display";
 import { FrigadeChecklist } from "@frigade/react";
+import Footer from "@/components/footer";
 
 function Page({
   messages,
@@ -21,6 +22,7 @@ function Page({
         subtitle={"Complete the following steps to get started"}
         primaryColor={"#3661E1"}
       />
+      <Footer />
     </div>
   );
 }
