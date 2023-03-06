@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <link rel="icon" href="/favicon-32x32.png" />
         <meta name="description" content="Love Supabase? Tell us about it." />
-        <meta property="og:site_name" content="supafan.dev" />
+        <meta property="og:site_name" content="supafan" />
         <meta
           property="og:description"
           content="Love Supabase? Tell us about it."
