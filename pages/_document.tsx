@@ -11,7 +11,7 @@ export default function Document() {
           property="og:description"
           content="Love Supabase? Tell us about it."
         />
-        <meta property="og:title" content="Supafan" />
+        <meta property="og:title" content="supafan" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Supafan" />
         <meta

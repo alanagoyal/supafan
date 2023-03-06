@@ -20,7 +20,7 @@ export default async function handler() {
           alignItems: "center",
         }}
       >
-        supafan ⚡️
+        supafan 💫
       </div>
     ),
     {

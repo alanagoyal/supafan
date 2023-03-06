@@ -31,7 +31,7 @@ export default function Display() {
 
   return (
     <div className="px-4">
-      <Gallery quotes={quotes} />
+      <Gallery quotes={quotes.reverse()} />
     </div>
   );
 }
