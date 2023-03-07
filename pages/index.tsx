@@ -4,6 +4,7 @@ import Message from "@/components/message";
 import Display from "@/components/display";
 import { FrigadeChecklist } from "@frigade/react";
 import Footer from "@/components/footer";
+import Head from "next/head";
 
 function Page({
   messages,
@@ -12,6 +13,9 @@ function Page({
 }) {
   return (
     <div>
+      <Head>
+        <title>Supafan</title>
+      </Head>
       <Message />
       <Display />
       <FrigadeChecklist
