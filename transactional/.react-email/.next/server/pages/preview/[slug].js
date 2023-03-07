@@ -20,12 +20,12 @@ exports.modules = {
 
 var map = {
 	"./new-fan-mail": [
-		"./emails/new-fan-mail.jsx",
-		"emails_new-fan-mail_jsx"
+		"./emails/new-fan-mail.tsx",
+		"emails_new-fan-mail_tsx"
 	],
-	"./new-fan-mail.jsx": [
-		"./emails/new-fan-mail.jsx",
-		"emails_new-fan-mail_jsx"
+	"./new-fan-mail.tsx": [
+		"./emails/new-fan-mail.tsx",
+		"emails_new-fan-mail_tsx"
 	],
 	"./notion-magic-link": [
 		"./emails/notion-magic-link.tsx",

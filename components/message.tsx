@@ -9,6 +9,23 @@ type Messages = Database["public"]["Tables"]["messages"]["Row"];
 export default function Message() {
   const [message, setMessage] = useState<Messages["message_text"]>("");
 
+  async function sendMail(message_text: string, gif_url: string) {
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message_text,
+          gif_url,
+        }),
+      });
+      const data = await response.json();
+      console.log("Email sent:", data);
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
+  }
+
   async function submitMessage(message: Messages["message_text"]) {
     // make api call to filter inapropriate messages
     const filter_response = await fetch("/api/filterMessages", {
@@ -34,6 +51,7 @@ export default function Message() {
     const tenor_result = await tenor_response.json();
     const gif_url = tenor_result.response;
 
+    // insert in db
     try {
       let { error } = await supabase
         .from("messages")
@@ -43,6 +61,9 @@ export default function Message() {
     } catch (error) {
       console.log(error);
     }
+
+    // send message
+    sendMail(message!, gif_url);
   }
 
   return (

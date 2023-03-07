@@ -9,28 +9,31 @@ import { Preview } from "@react-email/preview";
 import { Text } from "@react-email/text";
 import * as React from "react";
 
-export default function EmailTemplate(props) {
-  const { message_text, gif_url } = props;
+interface EmailProps {
+  message_text: string;
+  gif_url: String;
+}
 
+export default function EmailTemplate({ message_text, gif_url }: EmailProps) {
   return (
     <Html>
       <Head />
       <Preview>You got some new fan mail!</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Heading style={h1}>Check out your new fan mail!</Heading>
-          <Img src={gif_url} alt="gif" width="300" height="300" />
+          <Heading style={h1}>Check out your new fan mail 👇🏼</Heading>
           <Text style={{ ...text, marginBottom: "14px" }}>{message_text}</Text>
+          <Img src={`${gif_url}`} alt="gif" style={{ marginBottom: "30px" }} />
           <Link
             href={"https://supafan.vercel.app/"}
             target="_blank"
             style={{
               ...link,
               display: "block",
-              marginBottom: "16px",
+              marginBottom: "60px",
             }}
           >
-            Click here to see more!
+            Want to see more?
           </Link>
         </Container>
       </Body>
@@ -53,7 +56,7 @@ const h1 = {
     "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
   fontSize: "24px",
   fontWeight: "bold",
-  margin: "40px 0",
+  margin: "20px 0",
   padding: "0",
 };
 
