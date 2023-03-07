@@ -5,6 +5,7 @@ import Display from "@/components/display";
 import { FrigadeChecklist } from "@frigade/react";
 import Footer from "@/components/footer";
 import Head from "next/head";
+import Github from "@/components/github";
 
 function Page({
   messages,
@@ -16,6 +17,13 @@ function Page({
       <Head>
         <title>Supafan</title>
       </Head>
+      <h1 className="text-4xl text-gray-100 font-bold text-center pt-10">
+        Supafan
+      </h1>
+
+      <h2 className="text-1xl text-gray-100 text-center pt-4">
+        Tell us what you love about Supabase 👇🏼
+      </h2>
       <Message />
       <Display />
       <FrigadeChecklist

@@ -67,20 +67,14 @@ export default function Message() {
   }
 
   return (
-    <div className="py-5 mx-10 max-width-5-xl">
+    <div className="py-2 mx-10 max-width-5-xl">
       <Toaster />
-      <h1 className="text-4xl text-gray-100 font-bold text-center my-6">
-        Supafan
-      </h1>
-      <h2 className="text-1xl text-gray-100 text-center my-6">
-        Tell us what you love about Supabase 👇🏼
-      </h2>
       <div className="my-4 flex justify-center">
         <input
           autoComplete="off"
           id="message"
           type="text"
-          className="w-full rounded-md bg-[#3b3b3b] border-gray-300 shadow-sm py-2 px-3 my-4 focus:outline-none focus:ring-green-500 focus:border-green-500 text-base sm:text-sm"
+          className="w-full rounded-md bg-[#3b3b3b] border-gray-300 shadow-sm pb-2 px-3 my-4 focus:outline-none focus:ring-green-500 focus:border-green-500 text-base sm:text-sm"
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
