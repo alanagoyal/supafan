@@ -74,7 +74,7 @@ export default function Message() {
           autoComplete="off"
           id="message"
           type="text"
-          className="w-full rounded-md bg-[#3b3b3b] border-gray-300 shadow-sm pb-2 px-3 my-4 focus:outline-none focus:ring-green-500 focus:border-green-500 text-base sm:text-sm"
+          className="w-full rounded-md bg-supabase-gray-500 border-gray-300 shadow-sm pb-2 px-3 my-4 focus:outline-none focus:ring-supabase-green-500 focus:border-supabase-green-500 text-base sm:text-sm"
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
@@ -89,7 +89,7 @@ export default function Message() {
         />
 
         <button
-          className="bg-[#2b825b] hover:bg-[#3dc688] text-white font-bold py-2 px-4 my-4 rounded-full ml-2"
+          className="bg-supabase-green-500 hover:bg-supabase-green-400 text-white font-bold py-2 px-4 my-4 rounded-full ml-2"
           onClick={() => {
             setMessage("");
             toast.success(

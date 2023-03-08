@@ -24,7 +24,7 @@ export const QuoteCard = ({
   gif_url,
 }: QuoteCardProps): JSX.Element => {
   return (
-    <div className="bg-[#1c1c1c] rounded-md p-6 gap-4 not-prose flex flex-col ">
+    <div className="bg-supabase-gray-800 rounded-md p-6 gap-4 not-prose flex flex-col ">
       <div className="flex flex-row gap-4 items-center">
         <img
           className="rounded-full w-10 h-10 object-cover border-[0.5px] border-white/50 bg-white/10 flex-none"
