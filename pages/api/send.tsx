@@ -15,8 +15,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const { message_text, gif_url } = req.body as SendEmailRequestData;
     console.log(req.body);
     const data = await resend.sendEmail({
-      from: "alana@basecase.vc",
-      to: "alanaan@gmail.com",
+      from: "hi@basecase.vc",
+      to: "hi@basecase.vc",
       subject: "Supafan mail ",
       react: <EmailTemplate message_text={message_text} gif_url={gif_url} />,
     });

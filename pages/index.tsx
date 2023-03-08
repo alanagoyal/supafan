@@ -17,13 +17,16 @@ function Page({
       <Head>
         <title>Supafan</title>
       </Head>
-      <h1 className="text-4xl text-gray-100 font-bold text-center pt-10">
+      <h1 className="text-5xl text-gray-100 font-bold text-center pt-12">
         Supafan
       </h1>
 
-      <h2 className="text-1xl text-gray-100 text-center pt-4">
+      <h2 className="text-xl text-gray-300 text-center pt-4">
         Tell us what you love about Supabase 👇🏼
       </h2>
+      <h3 className="text-sm text-gray-300 text-center pt-2">
+        Names, avatars, and gifs are randomly generated for your message
+      </h3>
       <Message />
       <Display />
       <FrigadeChecklist
