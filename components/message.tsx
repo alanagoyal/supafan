@@ -74,7 +74,7 @@ export default function Message() {
           autoComplete="off"
           id="message"
           type="text"
-          className="w-full rounded-md bg-supabase-gray-500 border-gray-300 shadow-sm pb-2 px-3 my-4 focus:outline-none focus:ring-supabase-green-500 focus:border-supabase-green-500 text-base sm:text-sm"
+          className="w-full rounded-md bg-supabase-gray-500 border-gray-300 shadow-sm pb-2 px-3 my-4 focus:outline-none focus:ring-supabase-green-500 focus:border-supabase-green-500 text-white sm:text-sm"
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {

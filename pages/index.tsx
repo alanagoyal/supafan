@@ -13,7 +13,7 @@ function Page({
   messages: Database["public"]["Tables"]["messages"]["Row"];
 }) {
   return (
-    <div>
+    <div className="bg-supabase-gray-900">
       <Head>
         <title>Supafan</title>
       </Head>
