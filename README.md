@@ -26,6 +26,8 @@ NEXT_PUBLIC_SUPABASE_URL = "https://<project>.supabase.co";
 NEXT_PUBLIC_SUPABASE_ANON_KEY = "<your-anon-key>";
 ```
 
+You'll also need API keys for [Pyq](https://www.pyqai.com/) (content filtering), [Tenor](https://tenor.com/) (gif generation), and [Resend](https://resend.com/) (emails).
+
 Run `npm run dev`
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
