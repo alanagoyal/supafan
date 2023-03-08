@@ -1,0 +1,47 @@
+{
+	"tokens": {
+		"colorData": [
+			{
+				"name": "supabase green",
+				"baseColor": "#2b825b",
+				"variants": {
+					"400": "#3dc688",
+					"500": "#2b825b"
+				}
+			},
+			{
+				"name": "supabase gray",
+				"baseColor": "#3b3b3b",
+				"variants": {
+					"500": "#3b3b3b",
+					"800": "#1c1c1c",
+					"900": "#000000"
+				}
+			}
+		],
+		"typography": {
+			"fontSizes": [
+				{
+					"value": 1,
+					"unit": "rem",
+					"name": "sm"
+				},
+				{
+					"value": 1.2,
+					"unit": "rem",
+					"name": "md"
+				},
+				{
+					"value": 1.4,
+					"unit": "rem",
+					"name": "lg"
+				}
+			]
+		}
+	},
+	"__internal__": {
+		"migrations": {
+			"version": "0.0.3"
+		}
+	}
+}
