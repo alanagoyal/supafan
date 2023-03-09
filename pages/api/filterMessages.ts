@@ -22,7 +22,7 @@ export default async function handler(
     version: 451,
     account: 162,
     input_sequence: message_text,
-    candidate_labels: ["profanity", "harsh"],
+    candidate_labels: ["profanity", "harsh", "nudity", "sexual", "boobs"],
   });
 
   var requestOptions: RequestInit = {
